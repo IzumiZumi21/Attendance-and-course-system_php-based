@@ -1,0 +1,5 @@
+# Abaikan file konfigurasi database lokal
+jadwal-absensi-tester/config/database.php
+
+# Atau jika Anda ingin mengabaikan seluruh folder config/database sensitif
+# /config/database.php

@@ -1,0 +1,386 @@
+/* Import Font Retro/Pixel dari Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=VT323&display=swap');
+
+/* ==========================================================================
+   MODE TERANG (LIGHT MODE) - Combinasi Putih & Biru Soft (Nyaman di Mata)
+   ========================================================================== */
+:root {
+  --bg-color: #f0f4f9;        /* Soft Ice Blue - Tidak menyilaukan */
+  --card-bg: #ffffff;        /* Kartu Putih Bersih */
+  --text-color: #1e293b;      /* Slate Dark Grey - Kontras lembut, tidak sakit mata */
+  --text-heading: #1e3a8a;    /* Deep Navy Blue untuk Judul Utama */
+  --input-bg: #f8fafc;       /* Off-White untuk Input */
+  --input-text: #0f172a;     /* Teks Input Gelap */
+  --btn-bg: #2563eb;         /* Royal Blue untuk Tombol Utama */
+  --btn-text: #ffffff;
+  --nav-bg: #1e3a8a;         /* Deep Navy Blue untuk Navbar */
+  --nav-text: #ffffff;
+  --border-color: #cbd5e1;   /* Border Soft Grey/Blue */
+  --num-bg: #eff6ff;         /* Latar Angka Dashboard - Soft Blue */
+  --num-color: #1d4ed8;      /* Warna Angka Dashboard - Electric Blue */
+  --th-bg: #dbeafe;          /* Header Tabel - Light Blue Accent */
+  --th-text: #1e3a8a;        /* Teks Header Tabel - Dark Blue */
+}
+
+/* ==========================================================================
+   MODE GELAP (DARK MODE)
+   ========================================================================== */
+body.dark-mode {
+  --bg-color: #0b0f19;
+  --card-bg: #1e293b;
+  --text-color: #f8fafc;
+  --text-heading: #93c5fd;    /* Soft Blue untuk Judul */
+  --input-bg: #0f172a;
+  --input-text: #ffffff;
+  --btn-bg: #3b82f6;
+  --btn-text: #ffffff;
+  --nav-bg: #020617;
+  --nav-text: #f8fafc;
+  --border-color: #334155;
+  --num-bg: #0f172a;
+  --num-color: #60a5fa;
+  --th-bg: #0f172a;
+  --th-text: #93c5fd;
+}
+
+* { 
+  box-sizing: border-box; 
+  margin: 0; 
+  padding: 0; 
+}
+
+body {
+  font-family: 'Orbitron', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
+  min-height: 100vh;
+}
+
+/* Header & Navigasi Navbar */
+.navbar {
+  background: var(--nav-bg);
+  padding: 14px 24px;
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  align-items: center;
+  border-bottom: 2px solid var(--border-color);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+.navbar strong { color: var(--nav-text); font-size: 1.1rem; margin-right: 12px; }
+.navbar a { color: #cbd5e1; text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+.navbar a:hover { color: #ffffff; }
+.navbar .right { margin-left: auto; display: flex; align-items: center; gap: 12px; }
+
+#theme-toggle {
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+#theme-toggle:hover { transform: scale(1.15); }
+
+/* Layout Kontainer Utama */
+.container {
+  max-width: 1000px;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+
+h1 { 
+  text-align: center; 
+  font-size: 1.8rem; 
+  margin-bottom: 24px; 
+  letter-spacing: 1px;
+  color: var(--text-heading); 
+}
+
+h2 { 
+  font-size: 1.3rem; 
+  margin: 24px 0 14px 0; 
+  color: var(--text-heading);
+}
+
+/* -------------------------------------------------------------------------- */
+/* FORM CONTROLS (Input, Select, Date, Password)                              */
+/* -------------------------------------------------------------------------- */
+input[type=text],
+input[type=password],
+input[type=email],
+input[type=number],
+input[type=date],
+select {
+  width: 100%;
+  padding: 10px 16px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background-color: var(--input-bg);
+  color: var(--input-text);
+  font-family: 'VT323', monospace;
+  font-size: 1.25rem;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  margin-bottom: 0;
+}
+
+input:focus, select:focus {
+  border-color: var(--btn-bg);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+}
+
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg fill='%232563eb' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 36px;
+  cursor: pointer;
+}
+
+select option {
+  background-color: var(--card-bg);
+  color: var(--text-color);
+}
+
+body.dark-mode select {
+  background-image: url("data:image/svg+xml;utf8,<svg fill='%23ffffff' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+}
+
+/* -------------------------------------------------------------------------- */
+/* STYLING TOMBOL (BUTTONS)                                                  */
+/* -------------------------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 18px;
+  background-color: var(--btn-bg);
+  color: var(--btn-text);
+  border: none;
+  border-radius: 8px;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.btn:hover {
+  background-color: #1d4ed8;
+  transform: translateY(-1px);
+}
+
+.btn.gray { background-color: #64748b; }
+.btn.gray:hover { background-color: #475569; }
+
+.btn.danger { background-color: #dc2626; }
+.btn.danger:hover { background-color: #b91c1c; }
+
+/* -------------------------------------------------------------------------- */
+/* TOOLBAR & SEARCH BAR                                                       */
+/* -------------------------------------------------------------------------- */
+.toolbar {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--card-bg);
+  padding: 14px 18px;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+}
+
+.toolbar form {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.toolbar input[type=text],
+.toolbar input[type=number],
+.toolbar input[type=date],
+.toolbar select {
+  width: auto;
+  min-width: 180px;
+}
+
+.toolbar .btn {
+  width: auto;
+}
+
+/* -------------------------------------------------------------------------- */
+/* STYLING TABEL & TOMBOL AKSI                                               */
+/* -------------------------------------------------------------------------- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--card-bg);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  margin-bottom: 20px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+th, td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+  font-family: 'VT323', monospace;
+  font-size: 1.25rem;
+  color: var(--text-color);
+}
+
+th {
+  background: var(--th-bg);
+  color: var(--th-text);
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+}
+
+tr:last-child td { border-bottom: none; }
+
+td form {
+  display: inline-block;
+  margin: 0 2px;
+}
+
+td .btn {
+  padding: 4px 10px;
+  font-size: 0.75rem;
+  border-radius: 6px;
+}
+
+/* -------------------------------------------------------------------------- */
+/* KARTU FORM (Login & Tambah/Edit Data)                                      */
+/* -------------------------------------------------------------------------- */
+.card-retro {
+  background-color: var(--card-bg);
+  padding: 30px;
+  border-radius: 16px;
+  max-width: 450px;
+  margin: 20px auto;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
+}
+
+.card-retro label {
+  display: block;
+  font-size: 0.95rem;
+  margin: 12px 0 6px;
+  font-weight: 700;
+  color: var(--text-color);
+}
+
+.card-retro input, 
+.card-retro select {
+  margin-bottom: 16px;
+}
+
+.card-retro .btn {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  margin-top: 10px;
+}
+
+/* -------------------------------------------------------------------------- */
+/* DASHBOARD CARDS                                                           */
+/* -------------------------------------------------------------------------- */
+.cards {
+  display: grid;
+  gap: 16px;
+  margin-bottom: 30px;
+}
+
+.dash-card {
+  background: var(--card-bg);
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.04);
+}
+
+.dash-card .num {
+  background: var(--num-bg);
+  color: var(--num-color);
+  font-size: 2rem;
+  font-weight: bold;
+  padding: 8px 20px;
+  border-radius: 8px;
+  margin-right: 20px;
+  border: 1px solid var(--border-color);
+}
+
+.dash-card .label {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-color);
+}
+
+/* Alert Notification */
+.alert {
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-size: 0.9rem;
+}
+.alert.success { background-color: #dcfce7; color: #15803d; border: 1px solid #86efac; }
+.alert.error { background-color: #fee2e2; color: #b91c1c; border: 1px solid #fca5a5; }
+
+/* Pagination */
+.pagination { display: flex; gap: 6px; margin-top: 16px; }
+.pagination a {
+  padding: 6px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  text-decoration: none;
+  color: var(--text-color);
+  background: var(--card-bg);
+  font-size: 0.85rem;
+}
+.pagination a.active {
+  background: var(--btn-bg);
+  color: #ffffff;
+}
+
+/* ==========================================================================
+   LAYOUT DASHBOARD SIDE-BY-SIDE (KIRI & KANAN)
+   ========================================================================== */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 320px 1fr; /* Kiri: 320px (Kartu), Kanan: sisa layar (Tabel) */
+  gap: 28px;
+  align-items: start;
+}
+
+.dash-left .cards {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 0;
+}
+
+.dash-right h2 {
+  margin-top: 0; /* Agar judul tabel sejajar dengan kartu teratas di kiri */
+  text-align: left;
+}
+
+/* Penyesuaian Responsif (Layar HP/Tablet Otomatis Menumpuk Kembali) */
+@media (max-width: 850px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+}
